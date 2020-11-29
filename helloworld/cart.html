@@ -21,8 +21,15 @@
         </h2>
         <!-- v-model输入绑定(可以通过F12控制台app._data.course 取值或者赋值) -->
         <p>
-            <input type="text" v-model="course">
-            <span>new course name:{{course}}</span>
+            <!--
+                 keydown.enter表示"按下回车"这一事件
+                 具体可参考:https://cn.vuejs.org/v2/guide/events.html#按键修饰符
+             -->
+            <input type="text" v-model="course" v-on:keydown.enter="addCourse">
+        </p>
+        <!-- v-on:(简写@)事件处理 -->
+        <p>
+            <button @click="addCourse">new course</button>
         </p>
         <!-- v-for列表渲染 -->
         <div v-for="c in courses" :key="c">
@@ -44,6 +51,14 @@
                     course: ''
                 }
             },
+            methods: {
+                addCourse() {
+                    // 1. 添加course到数组
+                    this.courses.push(this.course);
+                    // 2. 清空course
+                    this.course = '';
+                }
+            }
         });
     </script>
 </body>
