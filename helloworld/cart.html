@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>购物车</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
     <!-- 宿主文件 -->
-    <div id="app">
+    <div id="app" v-cloak>
         <!-- 绑定动态值v-bind:[属性名]="变量名" 简写为 :[属性名]="变量名" -->
         <h2 :title="titleMsg">
             <!-- 插值文本 -->
