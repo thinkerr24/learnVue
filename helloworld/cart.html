@@ -8,6 +8,9 @@
         [v-cloak] {
             display: none;
         }
+        .active {
+            background-color: #ddd;
+        }
     </style>
 </head>
 
@@ -32,7 +35,13 @@
             <button @click="addCourse">new course</button>
         </p>
         <!-- v-for列表渲染 -->
-        <div v-for="c in courses" :key="c">
+        <!-- 需求:选中course变色 active: xxx表达式, 如果xxx表达式为true, 那么这个item就有active属性类-->
+        <!-- <div v-for="c in courses" :key="c" :class="{active: selectedCourse === c}" @click="selectedCourse = c">
+            {{ c }}
+        </div> -->
+        <!-- style('background-color' or backgroundColor) -->
+        <div v-for="c in courses" :key="c" :style="{backgroundColor: selectedCourse === c ? '#ddd' : 'transparent'}" 
+           @click="selectedCourse = c">
             {{ c }}
         </div>
     </div>
@@ -48,7 +57,8 @@
                     title: '购物车',
                     titleMsg: '购物车文本提示信息',
                     courses: ['web全栈', 'web高级'],
-                    course: ''
+                    course: '',
+                    selectedCourse: '',
                 }
             },
             methods: {
