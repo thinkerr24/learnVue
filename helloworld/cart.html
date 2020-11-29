@@ -19,12 +19,19 @@
             <!-- 插值文本 -->
             {{title}}
         </h2>
-        <!-- 列表渲染 -->
+        <!-- v-model输入绑定(可以通过F12控制台app._data.course 取值或者赋值) -->
+        <p>
+            <input type="text" v-model="course">
+            <span>new course name:{{course}}</span>
+        </p>
+        <!-- v-for列表渲染 -->
         <div v-for="c in courses" :key="c">
             {{ c }}
         </div>
     </div>
     <script src="./script/vue.js"></script>
+    <!-- If can access network -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
     <script>
         // 1. 创建vue实例
         const app = new Vue({
@@ -33,7 +40,8 @@
                 return {
                     title: '购物车',
                     titleMsg: '购物车文本提示信息',
-                    courses: ['web全栈', 'web高级']
+                    courses: ['web全栈', 'web高级'],
+                    course: ''
                 }
             },
         });
