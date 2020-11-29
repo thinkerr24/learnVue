@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+</head>
+
+<body>
+    <!-- 宿主文件 -->
+    <div id="app">
+        <!-- 绑定动态值v-bind:[属性名]="变量名" 简写为 :[属性名]="变量名" -->
+        <h2 :title="titleMsg">
+            <!-- 插值文本 -->
+            {{title}}
+        </h2>
+    </div>
+    <script src="./script/vue.js"></script>
+    <script>
+        // 1. 创建vue实例
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    title: '购物车',
+                    titleMsg: '购物车文本提示信息'
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
