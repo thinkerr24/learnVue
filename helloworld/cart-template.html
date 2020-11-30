@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>购物车render版</title>
+    <style>
+        .active {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app"></div>
+    <script src="./script/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    title: '购物车',
+                    titleMsg: '购物车文本提示信息',
+                    courses: ['web全栈', 'web高级'],
+                    course: '',
+                    selectedCourse: '',
+                }
+            },
+            methods: {
+                addCourse() {
+                    this.courses.push(this.course);
+                    this.course = '';
+                }
+            },
+            render() {
+                with (this) {
+                    return _c('div', { attrs: { "id": "app" } }, [_c('h2', { attrs: { "title": titleMsg } }, [_v("\n            " + _s(title) + "\n        ")]), _v(" "), _c('p', [_c('input', { directives: [{ name: "model", rawName: "v-model", value: (course), expression: "course" }], attrs: { "type": "text" }, domProps: { "value": (course) }, on: { "keydown": function ($event) { if (!$event.type.indexOf('key') && _k($event.keyCode, "enter", 13, $event.key, "Enter")) return null; return addCourse($event) }, "input": function ($event) { if ($event.target.composing) return; course = $event.target.value } } })]), _v(" "), _c('p', [_c('button', { on: { "click": addCourse } }, [_v("new course")])]), _v(" "), (courses.length === 0) ? _c('p', [_v("没有任何课程信息")]) : _c('div', { staticClass: "course-list" }, _l((courses), function (c) { return _c('div', { key: c, style: ({ backgroundColor: selectedCourse === c ? '#ddd' : 'transparent' }), on: { "click": function ($event) { selectedCourse = c } } }, [_v("\n                " + _s(c) + "\n            ")]) }), 0)])
+                }
+
+            }
+
+        });
+
+        // console.log(app.$options.render);
+    </script>
+</body>
+
+</html>
