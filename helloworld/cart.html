@@ -8,6 +8,7 @@
         [v-cloak] {
             display: none;
         }
+
         .active {
             background-color: #ddd;
         }
@@ -34,16 +35,21 @@
         <p>
             <button @click="addCourse">new course</button>
         </p>
+        <!-- v-if/v-else条件渲染 -->
+        <p v-if="courses.length === 0">没有任何课程信息</p>
         <!-- v-for列表渲染 -->
         <!-- 需求:选中course变色 active: xxx表达式, 如果xxx表达式为true, 那么这个item就有active属性类-->
         <!-- <div v-for="c in courses" :key="c" :class="{active: selectedCourse === c}" @click="selectedCourse = c">
             {{ c }}
         </div> -->
         <!-- style('background-color' or backgroundColor) -->
-        <div v-for="c in courses" :key="c" :style="{backgroundColor: selectedCourse === c ? '#ddd' : 'transparent'}" 
-           @click="selectedCourse = c">
-            {{ c }}
+        <div class="course-list" v-else>
+            <div v-for="c in courses" :key="c" :style="{backgroundColor: selectedCourse === c ? '#ddd' : 'transparent'}"
+                @click="selectedCourse = c">
+                {{ c }}
+            </div>
         </div>
+
     </div>
     <script src="./script/vue.js"></script>
     <!-- If can access network -->
